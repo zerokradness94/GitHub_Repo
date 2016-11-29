@@ -1,0 +1,55 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+//Timothy Kang : Programmer
+
+class Addition extends JFrame implements ActionListener
+{	
+	JLabel enterLabel, answerLabel;
+	JTextField num1TextField, num2TextField, answerTextField;
+	JButton addButton;
+
+    public Addition()
+    {
+		Container pane = getContentPane();
+		pane.setLayout(new FlowLayout());
+
+		enterLabel = new JLabel("<< enter a number >>");
+		answerLabel = new JLabel("Answer:");
+		num1TextField = new JTextField(4);
+		num2TextField = new JTextField(4);
+		answerTextField = new JTextField(4);
+		addButton = new JButton("Add");
+
+		pane.add(num1TextField);
+		pane.add(enterLabel);
+		pane.add(num2TextField);
+		pane.add(addButton);
+		pane.add(answerLabel);
+		pane.add(answerTextField);
+		addButton.addActionListener(this);
+
+		setTitle("Addition Calculator");
+
+		pack();
+
+		setVisible(true); //allows the frame to be visible
+	}
+    public void actionPerformed(ActionEvent event)
+    {
+      if (event.getSource() == addButton)
+      {
+    	  int a = Integer.parseInt(num1TextField.getText());
+    	  int b = Integer.parseInt(num2TextField.getText());
+    	  int c = a + b;
+    	  String result = Integer.toString(c);
+    	  answerTextField.setText(result);
+      }  
+      }
+	public static void main(String[] args)
+	{
+		new  Addition();
+	}
+}
